@@ -13,3 +13,5 @@ function randomizeBoard() {
 }
 
 function randomShip() {}
+
+export { randomizeBoard };
