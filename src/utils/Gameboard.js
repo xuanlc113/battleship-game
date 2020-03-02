@@ -2,7 +2,7 @@ import { Ship } from "./Ship";
 import { randomizeBoard } from "./helper";
 
 function Gameboard() {
-  let missed = [];
+  let miss = [];
   let hit = [];
   let ships = randomizeBoard();
   let sunk = 0;
@@ -15,11 +15,11 @@ function Gameboard() {
         sunk++;
       }
     } else {
-      missed.push(pos);
+      miss.push(pos);
     }
   };
   const allShipsSunk = () => ships.length === sunk;
-  return { addShip, receiveAttack, missed, hit, allShipsSunk, ships };
+  return { receiveAttack, miss, hit, allShipsSunk, ships };
 }
 
 function containShip(pos, ships) {

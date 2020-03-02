@@ -7,31 +7,31 @@ test("contain ship", () => {
   expect(containShip([4, 0], [ship])).toBeNull();
 });
 
-test("attack", () => {
+test("miss", () => {
   let board = Gameboard();
   board.receiveAttack([0, 9]);
-  expect(board.missed).toEqual([[0, 9]]);
+  expect(board.miss).toEqual([[0, 9]]);
   board.receiveAttack([0, 0]);
-  expect(board.missed).toEqual([[0, 9]]);
+  expect(board.miss).toEqual([[0, 9]]);
   board.receiveAttack([0, 8]);
-  expect(board.missed).toEqual([
+  expect(board.miss).toEqual([
     [0, 9],
     [0, 8]
   ]);
 });
 
-test("missed", () => {
+test("hit", () => {
   let board = Gameboard();
   board.receiveAttack([0, 0]);
   expect(board.hit).toEqual([[0, 0]]);
   board.receiveAttack([0, 1]);
-  expect(board.missed).toEqual([
-    [0, 9],
+  expect(board.hit).toEqual([
+    [0, 0],
     [0, 1]
   ]);
   board.receiveAttack([0, 9]);
-  expect(board.missed).toEqual([
-    [0, 9],
+  expect(board.hit).toEqual([
+    [0, 0],
     [0, 1]
   ]);
 });

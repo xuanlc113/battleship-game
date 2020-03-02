@@ -8,7 +8,13 @@ const Board = props => {
     let cell = [];
     for (let i = 0; i < 10; i++) {
       for (let j = 0; j < 10; j++) {
-        cell.push(<Cell />);
+        if (props.board.hit.includes([i, j])) {
+          cell.push(<Cell style="hit" />);
+        } else if (props.board.miss.includes([i, j])) {
+          cell.push(<Cell style="miss" />);
+        } else {
+          cell.push(<Cell />);
+        }
       }
     }
     return cell;
