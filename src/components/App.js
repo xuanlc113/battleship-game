@@ -4,7 +4,7 @@ import Board from "./Board";
 import { randomizeBoard } from "../utils/helper";
 
 function App() {
-  const [ships, setShips] = useState(randomizeBoard());
+  const [board, setBoard] = useState(Gameboard());
   return (
     <div>
       <Board ships={ships} />
