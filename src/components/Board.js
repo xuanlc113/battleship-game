@@ -1,4 +1,5 @@
 import React, { useReducer } from "react";
+import Ship from "./Ship";
 
 const Board = props => {
   function renderBoard() {
@@ -10,7 +11,17 @@ const Board = props => {
     }
     return cell;
   }
-  return <div>{renderBoard()}</div>;
+
+  function renderShips() {
+    props.ships.map(ship => <Ship />);
+  }
+
+  return (
+    <div>
+      {renderBoard()}
+      {renderShips()}
+    </div>
+  );
 };
 
 export default Board;
