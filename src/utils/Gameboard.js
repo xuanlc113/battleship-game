@@ -6,9 +6,6 @@ function Gameboard() {
   let hit = [];
   let ships = randomizeBoard();
   let sunk = 0;
-  const addShip = (...arr) => {
-    ships.push(Ship(arr.length, ...arr));
-  };
   const receiveAttack = pos => {
     let ship = containShip(pos, ships);
     if (ship !== null) {
