@@ -13,7 +13,7 @@ const Board = props => {
         } else if (props.board.miss.includes([i, j])) {
           cell.push(<Cell style="miss" />);
         } else {
-          cell.push(<Cell />);
+          cell.push(<Cell style="empty" />);
         }
       }
     }
