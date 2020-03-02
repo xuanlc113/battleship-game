@@ -1,9 +1,10 @@
 import React from "react";
 import "./App.css";
 import Board from "./Board";
+import { randomizeBoard } from "../utils/helper";
 
 function App() {
-  const [ships, setShips] = useState([]);
+  const [ships, setShips] = useState(randomizeBoard());
   return (
     <div>
       <Board />
