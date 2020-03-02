@@ -1,5 +1,5 @@
-import { Ship } from "../Ship";
-import { Gameboard, containShip } from "../Gameboard";
+import { Ship } from "../utils/Ship";
+import { Gameboard, containShip } from "../utils/Gameboard";
 
 test("add ship", () => {
   let board = Gameboard();

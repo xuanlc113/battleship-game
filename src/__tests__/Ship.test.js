@@ -1,4 +1,4 @@
-import { Ship } from "../Ship";
+import { Ship } from "../utils/Ship";
 
 test("length", () => {
   let ship = Ship(3, 1, 1, true);
