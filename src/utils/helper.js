@@ -16,4 +16,13 @@ function randomizeBoard() {
 
 function randomShip() {}
 
-export { randomizeBoard };
+function includePos(arr, pos) {
+  for (let i of arr) {
+    if (i[0] === pos[0] && i[1] === pos[1]) {
+      return true;
+    }
+  }
+  return false;
+}
+
+export { randomizeBoard, includePos };
