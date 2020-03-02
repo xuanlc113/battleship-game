@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 
-const Board = () => {
+const Board = props => {
   function renderBoard() {
     let cell = [];
     for (let i = 0; i < 10; i++) {

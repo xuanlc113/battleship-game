@@ -7,7 +7,7 @@ function App() {
   const [ships, setShips] = useState(randomizeBoard());
   return (
     <div>
-      <Board />
+      <Board ships={ships} />
     </div>
   );
 }
