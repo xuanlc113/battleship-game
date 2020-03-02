@@ -13,15 +13,3 @@ function App() {
 }
 
 export default App;
-
-//App
-//instantiate gameboard and ships
-
-//Gameboard take gameboard obj and array of ship obj
-//10x10 grid
-//Array of Ships
-//
-
-//Ship
-//coordinates
-//sink
