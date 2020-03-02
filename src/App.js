@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
-import Board from "./Board";
+import Board from "./components/Board";
+import { Gameboard } from "./utils/Gameboard";
 
 function App() {
   const [board, setBoard] = useState(Gameboard());

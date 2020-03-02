@@ -1,3 +1,5 @@
+import { Ship } from "./Ship";
+
 function randomizeBoard() {
   let ships = [];
   ships = [

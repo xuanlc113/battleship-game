@@ -22,7 +22,7 @@ function Gameboard() {
     }
   };
   const allShipsSunk = () => ships.length === sunk;
-  return { addShip, receiveAttack, missed, hit, allShipsSunk, ships, board };
+  return { addShip, receiveAttack, missed, hit, allShipsSunk, ships };
 }
 
 function containShip(pos, ships) {
