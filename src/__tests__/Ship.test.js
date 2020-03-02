@@ -19,11 +19,11 @@ test("contain pos", () => {
   expect(ship2.containPos([4, 1])).toBeFalsy();
 });
 
-// test("sink", () => {
-//   let ship = Ship(3, 1, 2, 3);
-//   ship.hit(1);
-//   ship.hit(2);
-//   expect(ship.isSunk()).toBeFalsy();
-//   ship.hit(3);
-//   expect(ship.isSunk()).toBeTruthy();
-// });
+test("sink", () => {
+  let ship = Ship(3, 1, 2, true);
+  ship.hit([1, 2]);
+  ship.hit([1, 3]);
+  expect(ship.isSunk()).toBeFalsy();
+  ship.hit([1, 4]);
+  expect(ship.isSunk()).toBeTruthy();
+});
