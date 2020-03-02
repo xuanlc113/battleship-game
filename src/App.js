@@ -3,6 +3,7 @@ import "./App.css";
 import Board from "./Board";
 
 function App() {
+  const [ships, setShips] = useState([]);
   return (
     <div>
       <Board />
