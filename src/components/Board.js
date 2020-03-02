@@ -1,6 +1,7 @@
-import React, { useReducer } from "react";
+import React from "react";
 import Ship from "./Ship";
 import Cell from "./Cell";
+import "../styles/Board.css";
 
 const Board = props => {
   function renderBoard() {
@@ -18,9 +19,9 @@ const Board = props => {
   }
 
   return (
-    <div>
+    <div className="board">
       {renderBoard()}
-      {renderShips()}
+      {/* {renderShips()} */}
     </div>
   );
 };
