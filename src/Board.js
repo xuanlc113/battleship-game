@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import { Gameboard } from "./Gameboard";
 
 const Board = () => {
-  const [board, setBoard] = useState(Gameboard().board);
+  const [board, dispatch] = useReducer(reducer, initialState);
   return <div>{board.map()}</div>;
 };
 
