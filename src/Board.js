@@ -1,9 +1,16 @@
 import React, { useReducer } from "react";
-import { Gameboard } from "./Gameboard";
 
 const Board = () => {
-  const [board, dispatch] = useReducer(reducer, initialState);
-  return <div>{board.map()}</div>;
+  function renderBoard() {
+    let cell = [];
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 10; j++) {
+        cell.push(<Cell />);
+      }
+    }
+    return cell;
+  }
+  return <div>{renderBoard()}</div>;
 };
 
 export default Board;
