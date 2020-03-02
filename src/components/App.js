@@ -6,7 +6,7 @@ function App() {
   const [board, setBoard] = useState(Gameboard());
   return (
     <div>
-      <Board ships={board.ships} />
+      <Board board={board} />
     </div>
   );
 }

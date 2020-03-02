@@ -13,7 +13,7 @@ const Board = props => {
   }
 
   function renderShips() {
-    props.ships.map(ship => <Ship />);
+    props.board.ships.map(ship => <Ship />);
   }
 
   return (
