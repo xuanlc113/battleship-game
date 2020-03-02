@@ -1,10 +1,10 @@
 import { Ship } from "./Ship";
+import { randomizeBoard } from "./helper";
 
 function Gameboard() {
-  let board = [];
   let missed = [];
   let hit = [];
-  let ships = [];
+  let ships = randomizeBoard();
   let sunk = 0;
   const addShip = (...arr) => {
     ships.push(Ship(arr.length, ...arr));
