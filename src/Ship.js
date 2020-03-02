@@ -1,24 +1,25 @@
 ///orientation true = vertical, false = horizontal
 function Ship(length, x, y, orientation) {
   let coord = [x, y];
+  let damage = 0;
   const containPos = pos => {
     if (orientation) {
-      if (pos[0] === x && pos[1] >= y && pos[1] <= y + length) {
+      if (pos[0] === x && pos[1] >= y && pos[1] < y + length) {
         return true;
       }
       return false;
     }
-    if (pos[1] === y && pos[0] >= x && pos[0] <= x + length) {
+    if (pos[1] === y && pos[0] >= x && pos[0] < x + length) {
       return true;
     }
     return false;
   };
   const hit = pos => {
-    if (coord.includes(pos)) {
-      coord = coord.filter(i => i !== pos);
+    if (containPos(pos)) {
+      damage++;
     }
   };
-  const isSunk = () => coord.length === 0;
+  const isSunk = () => length === damage;
   return { length, hit, isSunk, containPos };
 }
 
