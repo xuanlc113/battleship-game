@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Ship from "./Ship";
 import Cell from "./Cell";
 import { includePos } from "../utils/helper";
@@ -29,13 +29,13 @@ const Board = props => {
   }
 
   function renderShips() {
-    props.board.ships.map(ship => <Ship />);
+    return props.board.ships.map(ship => <Ship ship={ship} />);
   }
 
   return (
     <div className="board">
       {renderBoard()}
-      {/* {renderShips()} */}
+      {renderShips()}
     </div>
   );
 };

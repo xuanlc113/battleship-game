@@ -20,7 +20,7 @@ function Ship(length, x, y, orientation) {
     }
   };
   const isSunk = () => length === damage;
-  return { length, hit, isSunk, containPos };
+  return { length, hit, isSunk, containPos, orientation };
 }
 
 export { Ship };
