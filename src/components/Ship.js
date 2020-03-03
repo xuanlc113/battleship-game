@@ -2,22 +2,40 @@ import React from "react";
 import styled from "styled-components";
 
 const VerticalShip = styled.div`
+  position: absolute;
+  left: ${props => props.coord[0] * 40}px;
+  top: ${props => props.coord[1] * 40}px;
   width: 40px;
   height: ${props => props.length * 40}px;
   border: 1px black solid;
+  background: lightblue;
 `;
 const HorizontalShip = styled.div`
+  position: absolute;
+  left: ${props => props.coord[0] * 40}px;
+  top: ${props => props.coord[1] * 40}px;
   width: ${props => props.length * 40}px;
   height: 40px;
   border: 1px black solid;
+  background: lightblue;
 `;
 
 const Ship = props => {
   console.log(props.ship.length);
   if (props.ship.orientation) {
-    return <VerticalShip length={props.ship.length}></VerticalShip>;
+    return (
+      <VerticalShip
+        length={props.ship.length}
+        coord={props.ship.coord}
+      ></VerticalShip>
+    );
   }
-  return <HorizontalShip length={props.ship.length}></HorizontalShip>;
+  return (
+    <HorizontalShip
+      length={props.ship.length}
+      coord={props.ship.coord}
+    ></HorizontalShip>
+  );
 };
 
 export default Ship;

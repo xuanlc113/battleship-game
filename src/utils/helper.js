@@ -9,7 +9,7 @@ function randomizeBoard() {
     Ship(3, 1, 6, false),
     Ship(2, 7, 7, false),
     Ship(1, 8, 1, true),
-    Ship(1, 8, 9, true)
+    Ship(1, 9, 9, true)
   ];
   return ships;
 }
