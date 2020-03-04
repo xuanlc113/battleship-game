@@ -1,15 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
-import Board from "./components/Board";
-import { Gameboard } from "./utils/Gameboard";
+import Game from "./components/Game";
 
 function App() {
-  const [computerBoard, setComputerBoard] = useState(Gameboard());
-  const [playerBoard, setPlayerBoard] = useState(Gameboard());
   return (
-    <div className="play-area">
-      <Board board={computerBoard} />
-      <Board board={playerBoard} />
+    <div>
+      <Game />
     </div>
   );
 }
