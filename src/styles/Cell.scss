@@ -2,4 +2,17 @@
   height: 40px;
   width: 40px;
   border: 1px black solid;
+  &:hover {
+    background: lightgrey;
+  }
+}
+
+.hit {
+  background: red;
+  opacity: 0.5;
+}
+
+.miss {
+  background: lightblue;
+  opacity: 0.5;
 }
