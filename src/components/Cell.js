@@ -5,7 +5,7 @@ const Cell = props => {
   return (
     <div
       className={`cell ${props.style}`}
-      onClick={() => props.clickCell(props.pos)}
+      onClick={props.clickCell ? () => props.clickCell(props.pos) : null}
     ></div>
   );
 };
