@@ -4,10 +4,6 @@
   border: 1px black solid;
 }
 
-.cell:hover {
-  background: lightgrey;
-}
-
 .hit {
   background: red;
   opacity: 0.5;
@@ -16,4 +12,8 @@
 .miss {
   background: lightblue;
   opacity: 0.5;
+}
+
+.empty:hover {
+  background: lightgrey;
 }
