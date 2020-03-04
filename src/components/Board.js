@@ -16,12 +16,12 @@ const Board = props => {
     let cell = [];
     for (let i = 0; i < 10; i++) {
       for (let j = 0; j < 10; j++) {
-        if (includePos(props.board.hit, [i, j])) {
-          cell.push(<Cell style="hit" pos={[i, j]} />);
-        } else if (includePos(props.board.miss, [i, j])) {
-          cell.push(<Cell style="miss" pos={[i, j]} />);
+        if (includePos(props.board.hit, [j, i])) {
+          cell.push(<Cell style="hit" />);
+        } else if (includePos(props.board.miss, [j, i])) {
+          cell.push(<Cell style="miss" />);
         } else {
-          cell.push(<Cell style="empty" pos={[i, j]} clickCell={clickCell} />);
+          cell.push(<Cell style="empty" pos={[j, i]} clickCell={clickCell} />);
         }
       }
     }

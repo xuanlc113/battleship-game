@@ -9,14 +9,17 @@ test("contain ship", () => {
 
 test("miss", () => {
   let board = Gameboard();
-  board.receiveAttack([0, 9]);
-  expect(board.miss).toEqual([[0, 9]]);
-  board.receiveAttack([0, 0]);
-  expect(board.miss).toEqual([[0, 9]]);
-  board.receiveAttack([0, 8]);
+  board.receiveAttack([1, 0]);
+  expect(board.miss).toEqual([[1, 0]]);
+  board.receiveAttack([2, 0]);
   expect(board.miss).toEqual([
-    [0, 9],
-    [0, 8]
+    [1, 0],
+    [2, 0]
+  ]);
+  board.receiveAttack([0, 1]);
+  expect(board.miss).toEqual([
+    [1, 0],
+    [2, 0]
   ]);
 });
 
@@ -29,7 +32,7 @@ test("hit", () => {
     [0, 0],
     [0, 1]
   ]);
-  board.receiveAttack([0, 9]);
+  board.receiveAttack([1, 0]);
   expect(board.hit).toEqual([
     [0, 0],
     [0, 1]
