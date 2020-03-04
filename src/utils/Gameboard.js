@@ -1,4 +1,3 @@
-import { Ship } from "./Ship";
 import { randomizeBoard } from "./helper";
 
 function Gameboard() {

@@ -37,4 +37,20 @@ test("hit", () => {
     [0, 0],
     [0, 1]
   ]);
+  board.receiveAttack([8, 1]);
+  expect(board.hit).toEqual([
+    [0, 0],
+    [0, 1],
+    [8, 1]
+  ]);
+});
+
+test("all ships sunk", () => {
+  let board = Gameboard();
+  board.receiveAttack([0, 0]);
+  board.receiveAttack([0, 1]);
+  board.receiveAttack([0, 2]);
+  board.receiveAttack([0, 3]);
+  board.receiveAttack([8, 1]);
+  expect(board.allShipsSunk()).toBeTruthy();
 });

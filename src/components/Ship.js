@@ -23,7 +23,6 @@ const HorizontalShip = styled.div`
 `;
 
 const Ship = props => {
-  console.log(props.ship.length);
   if (props.ship.orientation) {
     return (
       <VerticalShip

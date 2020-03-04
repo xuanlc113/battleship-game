@@ -10,6 +10,13 @@ const Board = props => {
   function clickCell(pos) {
     props.board.receiveAttack(pos);
     setRender(prevState => !prevState);
+    checkWin();
+  }
+
+  function checkWin() {
+    if (props.board.allShipsSunk()) {
+      console.log("win");
+    }
   }
 
   function renderBoard() {
