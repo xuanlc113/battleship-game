@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Ship from "./Ship";
 import Cell from "./Cell";
 import { includePos } from "../utils/helper";
@@ -7,6 +7,14 @@ import "../styles/Board.css";
 const ComputerBoard = props => {
   const [, setRender] = useState(true);
 
+  useEffect(() => {
+    if (!props.turn) {
+      console.log("ye");
+      props.next();
+    }
+  }, [props.turn]);
+
+  //useeffect
   function clickCell(pos) {
     props.board.receiveAttack(pos);
     setRender(prevState => !prevState);
@@ -30,7 +38,7 @@ const ComputerBoard = props => {
         } else if (includePos(props.board.miss, [j, i])) {
           cell.push(<Cell style="miss" />);
         } else {
-          cell.push(<Cell style="empty" pos={[j, i]} clickCell={clickCell} />);
+          cell.push(<Cell style="empty" />);
         }
       }
     }
@@ -45,6 +53,7 @@ const ComputerBoard = props => {
     <div className="board">
       {renderBoard()}
       {renderShips()}
+      {props.children}
     </div>
   );
 };

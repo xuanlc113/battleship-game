@@ -45,6 +45,7 @@ const PlayerBoard = props => {
     <div className="board">
       {renderBoard()}
       {renderShips()}
+      {props.children}
     </div>
   );
 };
