@@ -4,7 +4,7 @@ import Cell from "./Cell";
 import { includePos } from "../utils/helper";
 import "../styles/Board.css";
 
-const Board = props => {
+const PlayerBoard = props => {
   const [, setRender] = useState(true);
 
   function clickCell(pos) {
@@ -16,6 +16,8 @@ const Board = props => {
   function checkWin() {
     if (props.board.allShipsSunk()) {
       console.log("win");
+    } else {
+      props.next();
     }
   }
 
@@ -47,4 +49,4 @@ const Board = props => {
   );
 };
 
-export default Board;
+export default PlayerBoard;
