@@ -9,6 +9,7 @@ const VerticalShip = styled.div`
   height: ${props => props.length * 40}px;
   border: 1px black solid;
   background: lightblue;
+  z-index: -1;
 `;
 const HorizontalShip = styled.div`
   position: absolute;
@@ -18,6 +19,7 @@ const HorizontalShip = styled.div`
   height: 40px;
   border: 1px black solid;
   background: lightblue;
+  z-index: -1;
 `;
 
 const Ship = props => {

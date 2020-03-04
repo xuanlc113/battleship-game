@@ -4,10 +4,12 @@ import Board from "./components/Board";
 import { Gameboard } from "./utils/Gameboard";
 
 function App() {
-  const [board, setBoard] = useState(Gameboard());
+  const [computerBoard, setComputerBoard] = useState(Gameboard());
+  const [playerBoard, setPlayerBoard] = useState(Gameboard());
   return (
-    <div>
-      <Board board={board} />
+    <div className="play-area">
+      <Board board={computerBoard} />
+      <Board board={playerBoard} />
     </div>
   );
 }

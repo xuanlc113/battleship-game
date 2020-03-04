@@ -1,3 +1,8 @@
 * {
   box-sizing: border-box;
 }
+
+.play-area {
+  display: flex;
+  justify-content: space-around;
+}
