@@ -18,6 +18,8 @@ function Gameboard() {
     }
   };
   const allShipsSunk = () => ships.length === sunk;
+
+  const moveShip = (id, x, y, orientation) => {};
   return { receiveAttack, miss, hit, allShipsSunk, ships };
 }
 

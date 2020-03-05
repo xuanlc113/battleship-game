@@ -54,3 +54,10 @@ test("all ships sunk", () => {
   board.receiveAttack([8, 1]);
   expect(board.allShipsSunk()).toBeTruthy();
 });
+
+test("move ship", () => {
+  let board = Gameboard();
+  expect(containShip([9, 9])).toBeNull();
+  board.moveShip(1, 9, 9, true);
+  expect(containShip([9, 9])).not.toBeNull();
+});
