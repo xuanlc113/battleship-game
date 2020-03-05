@@ -14,7 +14,7 @@ const ComputerBoard = props => {
         } else if (includePos(props.board.miss, [j, i])) {
           cell.push(<Cell style="miss" />);
         } else {
-          cell.push(<Cell style="empty" />);
+          cell.push(<Cell style="empty" board={props.board} pos={[j, i]} />);
         }
       }
     }
@@ -22,7 +22,7 @@ const ComputerBoard = props => {
   }
 
   function renderShips() {
-    return props.board.ships.map(ship => <Ship ship={ship} />);
+    return props.board.getShips().map(ship => <Ship ship={ship} />);
   }
 
   return (

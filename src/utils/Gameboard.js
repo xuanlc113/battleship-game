@@ -25,9 +25,6 @@ function Gameboard() {
     let ship = ships.find(ship => ship.id === id);
     ship.changePosition(x, y, orientation);
     ships.splice(id, 1, ship);
-    for (let i of ships) {
-      console.log(i.getCoord());
-    }
   };
 
   const containShip = pos => {

@@ -8,6 +8,7 @@ const PlayerBoard = props => {
   const [, setRender] = useState(true);
 
   function clickCell(pos) {
+    console.log(pos);
     props.board.receiveAttack(pos);
     setRender(prevState => !prevState);
     props.next();
@@ -22,7 +23,7 @@ const PlayerBoard = props => {
         } else if (includePos(props.board.miss, [j, i])) {
           cell.push(<Cell style="miss" />);
         } else {
-          cell.push(<Cell style="empty" pos={[j, i]} clickCell={clickCell} />);
+          cell.push(<Cell style="empty" clickCell={clickCell} pos={[j, i]} />);
         }
       }
     }
@@ -31,7 +32,7 @@ const PlayerBoard = props => {
 
   //remove to hide ships
   function renderShips() {
-    return props.board.ships.map(ship => <Ship ship={ship} />);
+    return props.board.getShips().map(ship => <Ship ship={ship} />);
   }
 
   return (

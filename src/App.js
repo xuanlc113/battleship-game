@@ -1,12 +1,14 @@
 import React from "react";
 import "./App.css";
 import Game from "./components/Game";
+import Backend from "react-dnd-html5-backend";
+import { DndProvider } from "react-dnd";
 
 function App() {
   return (
-    <div>
+    <DndProvider backend={Backend}>
       <Game />
-    </div>
+    </DndProvider>
   );
 }
 

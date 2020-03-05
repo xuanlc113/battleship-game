@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { useDrag } from "react-dnd";
+import { ItemTypes } from "../utils/ItemTypes";
 
 const VerticalShip = styled.div`
   position: absolute;
@@ -22,10 +24,21 @@ const HorizontalShip = styled.div`
   z-index: -1;
 `;
 
+// opacity: ${props => (props.drag ? 0.5 : 1)};
+
 const Ship = props => {
+  const [{ isDragging }, drag] = useDrag({
+    item: { type: ItemTypes.SHIP, id: props.ship.id },
+    collect: monitor => ({
+      isDragging: !!monitor.isDragging()
+    })
+  });
+
   if (props.ship.getOrientation()) {
     return (
       <VerticalShip
+        ref={drag}
+        // drag={isDragging}
         length={props.ship.length}
         coord={props.ship.getCoord()}
       ></VerticalShip>
@@ -33,6 +46,8 @@ const Ship = props => {
   }
   return (
     <HorizontalShip
+      ref={drag}
+      // drag={isDragging}
       length={props.ship.length}
       coord={props.ship.getCoord()}
     ></HorizontalShip>
