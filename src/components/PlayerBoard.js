@@ -29,6 +29,7 @@ const PlayerBoard = props => {
     return cell;
   }
 
+  //remove to hide ships
   function renderShips() {
     return props.board.ships.map(ship => <Ship ship={ship} />);
   }
