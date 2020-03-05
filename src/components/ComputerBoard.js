@@ -1,34 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Ship from "./Ship";
 import Cell from "./Cell";
 import { includePos } from "../utils/helper";
 import "../styles/Board.css";
 
 const ComputerBoard = props => {
-  const [, setRender] = useState(true);
-
-  useEffect(() => {
-    if (!props.turn) {
-      console.log("ye");
-      props.next();
-    }
-  }, [props.turn]);
-
-  //useeffect
-  function clickCell(pos) {
-    props.board.receiveAttack(pos);
-    setRender(prevState => !prevState);
-    checkWin();
-  }
-
-  function checkWin() {
-    if (props.board.allShipsSunk()) {
-      console.log("win");
-    } else {
-      props.next();
-    }
-  }
-
   function renderBoard() {
     let cell = [];
     for (let i = 0; i < 10; i++) {

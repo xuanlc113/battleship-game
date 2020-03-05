@@ -10,15 +10,7 @@ const PlayerBoard = props => {
   function clickCell(pos) {
     props.board.receiveAttack(pos);
     setRender(prevState => !prevState);
-    checkWin();
-  }
-
-  function checkWin() {
-    if (props.board.allShipsSunk()) {
-      console.log("win");
-    } else {
-      props.next();
-    }
+    props.next();
   }
 
   function renderBoard() {
@@ -45,7 +37,7 @@ const PlayerBoard = props => {
     <div className="board">
       {renderBoard()}
       {renderShips()}
-      {props.children}
+      {!props.turn && props.children}
     </div>
   );
 };
