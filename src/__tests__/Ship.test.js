@@ -27,3 +27,13 @@ test("sink", () => {
   ship.hit([1, 4]);
   expect(ship.isSunk()).toBeTruthy();
 });
+
+test("change ship position", () => {
+  let ship = Ship(3, 1, 2, true);
+  ship.changePosition(2, 3, false);
+  expect(ship.getCoord()).toEqual([2, 3]);
+  expect(ship.getOrientation()).toBeFalsy();
+  ship.changePosition(5, 1, true);
+  expect(ship.getCoord()).toEqual([5, 1]);
+  expect(ship.getOrientation()).toBeTruthy();
+});

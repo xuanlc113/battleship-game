@@ -2,6 +2,7 @@
 function Ship(length, x, y, orientation, id) {
   let coord = [x, y];
   let damage = 0;
+  let ori = orientation;
   const containPos = pos => {
     if (orientation) {
       if (pos[0] === x && pos[1] >= y && pos[1] < y + length) {
@@ -20,7 +21,25 @@ function Ship(length, x, y, orientation, id) {
     }
   };
   const isSunk = () => length === damage;
-  return { length, hit, isSunk, containPos, orientation, coord, id };
+
+  const changePosition = (x, y, orientation) => {
+    coord = [x, y];
+    ori = orientation;
+  };
+
+  const getCoord = () => coord;
+
+  const getOrientation = () => ori;
+  return {
+    length,
+    hit,
+    isSunk,
+    containPos,
+    getOrientation,
+    id,
+    changePosition,
+    getCoord
+  };
 }
 
 export { Ship };

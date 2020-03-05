@@ -5,6 +5,7 @@ function Gameboard() {
   let hit = [];
   let ships = randomizeBoard();
   let sunk = 0;
+
   const receiveAttack = pos => {
     let ship = containShip(pos, ships);
     if (ship !== null) {
@@ -17,9 +18,15 @@ function Gameboard() {
       miss.push(pos);
     }
   };
+
   const allShipsSunk = () => ships.length === sunk;
 
-  const moveShip = (id, x, y, orientation) => {};
+  const moveShip = (id, x, y, orientation) => {
+    let ship = ships.find(ship => ship.id === id);
+    ship.changePosition(x, y, orientation);
+    ships.splice(id, 1, ship);
+  };
+
   return { receiveAttack, miss, hit, allShipsSunk, ships };
 }
 
