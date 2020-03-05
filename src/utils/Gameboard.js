@@ -30,21 +30,23 @@ function Gameboard() {
     }
   };
 
-  function containShip(pos) {
+  const containShip = pos => {
     for (let i of ships) {
       if (i.containPos(pos)) {
         return i;
       }
     }
     return null;
-  }
+  };
+
+  const getShips = () => ships;
 
   return {
     receiveAttack,
     miss,
     hit,
     allShipsSunk,
-    ships,
+    getShips,
     moveShip,
     containShip
   };
