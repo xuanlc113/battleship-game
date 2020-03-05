@@ -23,18 +23,18 @@ const HorizontalShip = styled.div`
 `;
 
 const Ship = props => {
-  if (props.ship.orientation) {
+  if (props.ship.getOrientation()) {
     return (
       <VerticalShip
         length={props.ship.length}
-        coord={props.ship.coord}
+        coord={props.ship.getCoord()}
       ></VerticalShip>
     );
   }
   return (
     <HorizontalShip
       length={props.ship.length}
-      coord={props.ship.coord}
+      coord={props.ship.getCoord()}
     ></HorizontalShip>
   );
 };

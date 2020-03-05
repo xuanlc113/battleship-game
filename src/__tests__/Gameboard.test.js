@@ -1,10 +1,9 @@
-import { Ship } from "../utils/Ship";
-import { Gameboard, containShip } from "../utils/Gameboard";
+import { Gameboard } from "../utils/Gameboard";
 
 test("contain ship", () => {
-  let ship = Ship(3, 1, 2, true);
-  expect(typeof containShip([1, 2], [ship])).toBe("object");
-  expect(containShip([4, 0], [ship])).toBeNull();
+  let board = Gameboard();
+  expect(typeof board.containShip([0, 0])).toBe("object");
+  expect(board.containShip([9, 9])).toBeNull();
 });
 
 test("miss", () => {
@@ -57,7 +56,7 @@ test("all ships sunk", () => {
 
 test("move ship", () => {
   let board = Gameboard();
-  expect(containShip([9, 9])).toBeNull();
+  expect(board.containShip([9, 9])).toBeNull();
   board.moveShip(1, 9, 9, true);
-  expect(containShip([9, 9])).not.toBeNull();
+  expect(board.containShip([9, 9])).not.toBeNull();
 });

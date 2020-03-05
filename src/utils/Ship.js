@@ -4,7 +4,8 @@ function Ship(length, x, y, orientation, id) {
   let damage = 0;
   let ori = orientation;
   const containPos = pos => {
-    if (orientation) {
+    let [x, y] = getCoord();
+    if (getOrientation()) {
       if (pos[0] === x && pos[1] >= y && pos[1] < y + length) {
         return true;
       }

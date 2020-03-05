@@ -25,18 +25,29 @@ function Gameboard() {
     let ship = ships.find(ship => ship.id === id);
     ship.changePosition(x, y, orientation);
     ships.splice(id, 1, ship);
+    for (let i of ships) {
+      console.log(i.getCoord());
+    }
   };
 
-  return { receiveAttack, miss, hit, allShipsSunk, ships };
-}
-
-function containShip(pos, ships) {
-  for (let i of ships) {
-    if (i.containPos(pos)) {
-      return i;
+  function containShip(pos) {
+    for (let i of ships) {
+      if (i.containPos(pos)) {
+        return i;
+      }
     }
+    return null;
   }
-  return null;
+
+  return {
+    receiveAttack,
+    miss,
+    hit,
+    allShipsSunk,
+    ships,
+    moveShip,
+    containShip
+  };
 }
 
-export { Gameboard, containShip };
+export { Gameboard };
