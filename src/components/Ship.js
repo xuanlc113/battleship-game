@@ -11,7 +11,8 @@ const VerticalShip = styled.div`
   height: ${props => props.length * 40}px;
   border: 1px black solid;
   background: lightblue;
-  z-index: ${props => (props.start ? -1 : 2)};
+  z-index: ${props => (props.start ? -1 : props.isDragging ? -1 : 2)};
+  opacity: 0.5;
 `;
 const HorizontalShip = styled.div`
   position: absolute;
@@ -21,16 +22,20 @@ const HorizontalShip = styled.div`
   height: 40px;
   border: 1px black solid;
   background: lightblue;
-  z-index: ${props => (props.start ? -1 : 2)};
+  z-index: ${props => (props.start ? -1 : props.isDragging ? -1 : 2)};
+  opacity: 0.5;
 `;
-
-// opacity: ${props => (props.drag ? 0.5 : 1)};
 
 const Ship = props => {
   const [{ isDragging }, drag] = useDrag({
-    item: { type: ItemTypes.SHIP, id: props.ship.id },
+    item: {
+      type: ItemTypes.SHIP,
+      id: props.ship.id,
+      x: props.ship.getCoord()[0],
+      y: props.ship.getCoord()[1]
+    },
     collect: monitor => ({
-      isDragging: !!monitor.isDragging()
+      isDragging: monitor.isDragging()
     })
   });
 
@@ -38,20 +43,20 @@ const Ship = props => {
     return (
       <VerticalShip
         ref={drag}
-        // drag={isDragging}
         length={props.ship.length}
         coord={props.ship.getCoord()}
         start={props.start}
+        isDragging={isDragging}
       ></VerticalShip>
     );
   }
   return (
     <HorizontalShip
       ref={drag}
-      // drag={isDragging}
       length={props.ship.length}
       coord={props.ship.getCoord()}
       start={props.start}
+      isDragging={isDragging}
     ></HorizontalShip>
   );
 };

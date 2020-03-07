@@ -3,16 +3,33 @@ import "../styles/Cell.css";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "../utils/ItemTypes";
 
+function getNewCoords(offset, item) {
+  const y = 40 * item.y;
+  const x = 40 * item.x;
+
+  const row = Math.round((y + offset.y) / 40);
+  const col = Math.round((x + offset.x) / 40);
+  return { row, col };
+}
+
 const Cell = props => {
-  const [{ isOver }, drop] = useDrop({
+  const [, drop] = useDrop({
     accept: ItemTypes.SHIP,
-    drop: item => {
-      console.log("drp");
-      props.board.moveShip(item.id, props.pos[0], props.pos[1], true);
-      console.log(props.board.getShips());
+    drop: (item, monitor) => {
+      const offset = monitor.getDifferenceFromInitialOffset();
+      const { row, col } = getNewCoords(offset, item);
+      props.board.moveShip(item.id, col, row, true);
+      return undefined;
+    },
+    canDrop: (item, monitor) => {
+      // const delta = monitor.getDifferenceFromInitialOffset();
+
+      // const { row, col } = getNewCoords(delta, item);
+      return true;
     },
     collect: monitor => ({
-      isOver: !!monitor.isOver()
+      isOver: monitor.isOver(),
+      canDrop: monitor.canDrop()
     })
   });
   return (
