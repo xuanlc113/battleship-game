@@ -30,6 +30,20 @@ function Ship(length, x, y, orientation, id) {
 
   const getCoord = () => coord;
 
+  const getAllCoordsAtNewPos = (x, y) => {
+    let allCords = [];
+    if (orientation) {
+      for (let i = 0; i < length; i++) {
+        allCords.push([x, y + i]);
+      }
+    } else {
+      for (let i = 0; i < length; i++) {
+        allCords.push([x + i, y]);
+      }
+    }
+    return allCords;
+  };
+
   const getOrientation = () => ori;
   return {
     length,
@@ -39,7 +53,8 @@ function Ship(length, x, y, orientation, id) {
     getOrientation,
     id,
     changePosition,
-    getCoord
+    getCoord,
+    getAllCoordsAtNewPos
   };
 }
 

@@ -23,7 +23,14 @@ const PlayerBoard = props => {
         } else if (includePos(props.board.miss, [j, i])) {
           cell.push(<Cell style="miss" />);
         } else {
-          cell.push(<Cell style="empty" clickCell={clickCell} pos={[j, i]} />);
+          cell.push(
+            <Cell
+              style="empty"
+              clickCell={clickCell}
+              pos={[j, i]}
+              board={props.board}
+            />
+          );
         }
       }
     }

@@ -12,19 +12,6 @@ function getNewCoords(offset, item) {
   return { x, y };
 }
 
-function canMoveShip(x, y, length, orientation) {
-  if (orientation) {
-    if (y + length - 1 > 9 || y < 0) {
-      return false;
-    }
-  } else {
-    if (x + length - 1 > 9 || x < 0) {
-      return false;
-    }
-  }
-  return true;
-}
-
 const Cell = props => {
   const [, drop] = useDrop({
     accept: ItemTypes.SHIP,
@@ -35,16 +22,10 @@ const Cell = props => {
       return undefined;
     },
     canDrop: (item, monitor) => {
-      console.log(props.board);
       const delta = monitor.getDifferenceFromInitialOffset();
       const { x, y } = getNewCoords(delta, item);
-      return canMoveShip(x, y, item.length, item.orientation);
-      // return true;
-    },
-    collect: monitor => ({
-      isOver: monitor.isOver(),
-      canDrop: monitor.canDrop()
-    })
+      return props.board.canMoveShip(item.id, x, y);
+    }
   });
   return (
     <div

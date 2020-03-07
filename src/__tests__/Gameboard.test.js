@@ -56,9 +56,13 @@ test("all ships sunk", () => {
 
 test("can move ship", () => {
   let board = Gameboard();
+  //cannot move out
   expect(board.canMoveShip(0, 9, 9)).toBeFalsy();
   expect(board.canMoveShip(0, 9, 7)).toBeFalsy();
   expect(board.canMoveShip(0, 9, 6)).toBeTruthy();
+  //cannot move over another ship
+  expect(board.canMoveShip(0, 8, 1)).toBeFalsy();
+  expect(board.canMoveShip(0, 8, 0)).toBeFalsy();
 });
 
 test("move ship", () => {

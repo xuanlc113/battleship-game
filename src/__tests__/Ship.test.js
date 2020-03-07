@@ -37,3 +37,18 @@ test("change ship position", () => {
   expect(ship.getCoord()).toEqual([5, 1]);
   expect(ship.getOrientation()).toBeTruthy();
 });
+
+test("get all coordinates occupied by ship", () => {
+  let ship1 = Ship(3, 0, 0, true);
+  expect(ship1.getAllCoordsAtNewPos(1, 2)).toEqual([
+    [1, 2],
+    [1, 3],
+    [1, 4]
+  ]);
+  let ship2 = Ship(3, 0, 0, false);
+  expect(ship2.getAllCoordsAtNewPos(1, 2)).toEqual([
+    [1, 2],
+    [2, 2],
+    [3, 2]
+  ]);
+});

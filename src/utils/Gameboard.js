@@ -21,6 +21,31 @@ function Gameboard() {
 
   const allShipsSunk = () => ships.length === sunk;
 
+  const canMoveShip = (id, x, y) => {
+    let ship = ships.find(ship => ship.id === id);
+    let otherShips = ships.filter(ship => ship.id != id);
+    let length = ship.length;
+    let orientation = ship.getOrientation();
+    let allShipCoords = ship.getAllCoordsAtNewPos(x, y);
+    if (orientation) {
+      if (y + length - 1 > 9 || y < 0) {
+        return false;
+      }
+    } else {
+      if (x + length - 1 > 9 || x < 0) {
+        return false;
+      }
+    }
+    for (let ship of otherShips) {
+      for (let coord of allShipCoords) {
+        if (ship.containPos(coord)) {
+          return false;
+        }
+      }
+    }
+    return true;
+  };
+
   const moveShip = (id, x, y, orientation) => {
     let ship = ships.find(ship => ship.id === id);
     ship.changePosition(x, y, orientation);
@@ -44,6 +69,7 @@ function Gameboard() {
     hit,
     allShipsSunk,
     getShips,
+    canMoveShip,
     moveShip,
     containShip
   };
