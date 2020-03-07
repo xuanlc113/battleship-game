@@ -13,6 +13,7 @@ const VerticalShip = styled.div`
   background: lightblue;
   z-index: ${props => (props.start ? -1 : props.isDragging ? -1 : 2)};
   opacity: 0.5;
+  cursor: move;
 `;
 const HorizontalShip = styled.div`
   position: absolute;
@@ -24,6 +25,7 @@ const HorizontalShip = styled.div`
   background: lightblue;
   z-index: ${props => (props.start ? -1 : props.isDragging ? -1 : 2)};
   opacity: 0.5;
+  cursor: move;
 `;
 
 const Ship = props => {
@@ -31,8 +33,10 @@ const Ship = props => {
     item: {
       type: ItemTypes.SHIP,
       id: props.ship.id,
+      length: props.ship.length,
       x: props.ship.getCoord()[0],
-      y: props.ship.getCoord()[1]
+      y: props.ship.getCoord()[1],
+      orientation: props.ship.getOrientation()
     },
     collect: monitor => ({
       isDragging: monitor.isDragging()

@@ -4,12 +4,25 @@ import { useDrop } from "react-dnd";
 import { ItemTypes } from "../utils/ItemTypes";
 
 function getNewCoords(offset, item) {
-  const y = 40 * item.y;
-  const x = 40 * item.x;
+  let x = 40 * item.x;
+  let y = 40 * item.y;
 
-  const row = Math.round((y + offset.y) / 40);
-  const col = Math.round((x + offset.x) / 40);
-  return { row, col };
+  x = Math.round((x + offset.x) / 40);
+  y = Math.round((y + offset.y) / 40);
+  return { x, y };
+}
+
+function canMoveShip(x, y, length, orientation) {
+  if (orientation) {
+    if (y + length - 1 > 9 || y < 0) {
+      return false;
+    }
+  } else {
+    if (x + length - 1 > 9 || x < 0) {
+      return false;
+    }
+  }
+  return true;
 }
 
 const Cell = props => {
@@ -17,15 +30,16 @@ const Cell = props => {
     accept: ItemTypes.SHIP,
     drop: (item, monitor) => {
       const offset = monitor.getDifferenceFromInitialOffset();
-      const { row, col } = getNewCoords(offset, item);
-      props.board.moveShip(item.id, col, row, true);
+      const { x, y } = getNewCoords(offset, item);
+      props.board.moveShip(item.id, x, y, true);
       return undefined;
     },
     canDrop: (item, monitor) => {
-      // const delta = monitor.getDifferenceFromInitialOffset();
-
-      // const { row, col } = getNewCoords(delta, item);
-      return true;
+      console.log(props.board);
+      const delta = monitor.getDifferenceFromInitialOffset();
+      const { x, y } = getNewCoords(delta, item);
+      return canMoveShip(x, y, item.length, item.orientation);
+      // return true;
     },
     collect: monitor => ({
       isOver: monitor.isOver(),
