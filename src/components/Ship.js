@@ -11,7 +11,7 @@ const VerticalShip = styled.div`
   height: ${props => props.length * 40}px;
   border: 1px black solid;
   background: lightblue;
-  z-index: -1;
+  z-index: ${props => (props.start ? -1 : 2)};
 `;
 const HorizontalShip = styled.div`
   position: absolute;
@@ -21,7 +21,7 @@ const HorizontalShip = styled.div`
   height: 40px;
   border: 1px black solid;
   background: lightblue;
-  z-index: -1;
+  z-index: ${props => (props.start ? -1 : 2)};
 `;
 
 // opacity: ${props => (props.drag ? 0.5 : 1)};
@@ -41,6 +41,7 @@ const Ship = props => {
         // drag={isDragging}
         length={props.ship.length}
         coord={props.ship.getCoord()}
+        start={props.start}
       ></VerticalShip>
     );
   }
@@ -50,6 +51,7 @@ const Ship = props => {
       // drag={isDragging}
       length={props.ship.length}
       coord={props.ship.getCoord()}
+      start={props.start}
     ></HorizontalShip>
   );
 };

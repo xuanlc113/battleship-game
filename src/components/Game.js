@@ -66,6 +66,7 @@ const Game = () => {
             board={computerBoard}
             next={() => setTurn(prevState => !prevState)}
             turn={turn}
+            start={start}
           >
             <div className="click-guard"></div>
           </ComputerBoard>

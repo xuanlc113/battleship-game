@@ -22,7 +22,9 @@ const ComputerBoard = props => {
   }
 
   function renderShips() {
-    return props.board.getShips().map(ship => <Ship ship={ship} />);
+    return props.board
+      .getShips()
+      .map(ship => <Ship ship={ship} start={props.start} />);
   }
 
   return (
