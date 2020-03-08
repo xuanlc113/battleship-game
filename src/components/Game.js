@@ -3,11 +3,13 @@ import PlayerBoard from "./PlayerBoard";
 import ComputerBoard from "./ComputerBoard";
 import "../styles/Game.css";
 import { randomizeBoard } from "../utils/helper";
+import Computer from "../utils/Computer";
 
 const Game = () => {
   const [start, setStart] = useState(false);
   const [computerBoard, setComputerBoard] = useState(randomizeBoard());
   const [playerBoard, setPlayerBoard] = useState(randomizeBoard());
+  const [computer, setComputer] = useState(Computer());
   const [turn, setTurn] = useState(false);
   const newGameRef = useRef(false);
   const [winner, setWinner] = useState("");
@@ -16,10 +18,7 @@ const Game = () => {
     if (newGameRef.current) {
       if (winner === "") {
         if (!turn) {
-          computerBoard.receiveAttack([
-            Math.floor(Math.random() * 10),
-            Math.floor(Math.random() * 10)
-          ]);
+          computer.attack(computerBoard);
           setTurn(true);
         }
       }
