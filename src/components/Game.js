@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Gameboard } from "../utils/Gameboard";
 import PlayerBoard from "./PlayerBoard";
 import ComputerBoard from "./ComputerBoard";
 import "../styles/Game.css";
+import { randomizeBoard } from "../utils/helper";
 
 const Game = () => {
   const [start, setStart] = useState(false);
-  const [computerBoard, setComputerBoard] = useState(Gameboard());
-  const [playerBoard, setPlayerBoard] = useState(Gameboard());
+  const [computerBoard, setComputerBoard] = useState(randomizeBoard());
+  const [playerBoard, setPlayerBoard] = useState(randomizeBoard());
   const [turn, setTurn] = useState(false);
   const newGameRef = useRef(false);
   const [winner, setWinner] = useState("");
@@ -44,8 +44,8 @@ const Game = () => {
 
   function gameStatus() {
     if (start) {
-      setComputerBoard(Gameboard());
-      setPlayerBoard(Gameboard());
+      setComputerBoard(randomizeBoard());
+      setPlayerBoard(randomizeBoard());
       setTurn(false);
       setWinner("");
       newGameRef.current = false;

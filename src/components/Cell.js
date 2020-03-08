@@ -2,7 +2,6 @@ import React from "react";
 import "../styles/Cell.css";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "../utils/ItemTypes";
-import Ship from "./Ship";
 
 function getNewCoords(offset, item) {
   let x = 40 * item.x;
@@ -19,12 +18,12 @@ const Cell = props => {
     drop: (item, monitor) => {
       const offset = monitor.getDifferenceFromInitialOffset();
       const { x, y } = getNewCoords(offset, item);
-      props.board.moveShip(item.id, x, y, true);
+      props.board.moveShip(item.id, x, y, item.orientation);
       return undefined;
     },
     canDrop: (item, monitor) => {
-      const delta = monitor.getDifferenceFromInitialOffset();
-      const { x, y } = getNewCoords(delta, item);
+      const offset = monitor.getDifferenceFromInitialOffset();
+      const { x, y } = getNewCoords(offset, item);
       return props.board.canMoveShip(item.id, x, y);
     }
   });

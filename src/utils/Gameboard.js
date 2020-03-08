@@ -3,8 +3,17 @@ import { randomizeBoard } from "./helper";
 function Gameboard() {
   let miss = [];
   let hit = [];
-  let ships = randomizeBoard();
+  let ships = [];
   let sunk = 0;
+
+  const addShip = ship => {
+    ships.push(ship);
+    if (!canMoveShip(ship.id, ship.getCoord()[0], ship.getCoord()[1])) {
+      ships.pop();
+      return false;
+    }
+    return true;
+  };
 
   const receiveAttack = pos => {
     let ship = containShip(pos, ships);
@@ -64,6 +73,7 @@ function Gameboard() {
   const getShips = () => ships;
 
   return {
+    addShip,
     receiveAttack,
     miss,
     hit,
