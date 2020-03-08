@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/Cell.css";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "../utils/ItemTypes";
+import Ship from "./Ship";
 
 function getNewCoords(offset, item) {
   let x = 40 * item.x;
