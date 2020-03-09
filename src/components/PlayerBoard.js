@@ -8,7 +8,6 @@ const PlayerBoard = props => {
   const [, setRender] = useState(true);
 
   function clickCell(pos) {
-    console.log(pos);
     props.board.receiveAttack(pos);
     setRender(prevState => !prevState);
     props.next();

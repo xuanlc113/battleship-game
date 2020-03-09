@@ -18,7 +18,7 @@ const Game = () => {
     if (newGameRef.current) {
       if (winner === "") {
         if (!turn) {
-          computer.attack(computerBoard);
+          computer.attack(computerBoard, computer.randomCoords());
           setTurn(true);
         }
       }
