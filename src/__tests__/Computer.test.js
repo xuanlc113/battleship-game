@@ -19,7 +19,8 @@ test("vertical search", () => {
   let board = Gameboard();
   board.addShip(Ship(4, 0, 0, true, 0));
   let computer = Computer();
-  expect(computer.verticalSearch(board, [0, 2])).toEqual([
+  let [coord1, present1] = computer.verticalSearch(board, [0, 2]);
+  expect(coord1).toEqual([
     [0, 1],
     [0, 0],
     [0, 3],
@@ -28,7 +29,8 @@ test("vertical search", () => {
   //another block in ship position attacked already
   board.addShip(Ship(4, 9, 4, true, 0));
   computer.attackCoord(board, [9, 6]);
-  expect(computer.verticalSearch(board, [9, 5])).toEqual([
+  let [coord2, present2] = computer.verticalSearch(board, [9, 5]);
+  expect(coord2).toEqual([
     [9, 4],
     [9, 3],
     [9, 7],
@@ -40,16 +42,19 @@ test("horizontal search", () => {
   let board = Gameboard();
   board.addShip(Ship(4, 0, 0, false, 0));
   let computer = Computer();
-  expect(computer.horizontalSearch(board, [2, 0])).toEqual([
+  let [coord1, present1] = computer.horizontalSearch(board, [2, 0]);
+  expect(coord1).toEqual([
     [1, 0],
     [0, 0],
     [3, 0],
     [4, 0]
   ]);
-  board.addShip(Ship(4, 6, 0, false, 0));
-  expect(computer.horizontalSearch(board, [7, 0])).toEqual([
+  board.addShip(Ship(4, 5, 0, false, 0));
+  let [coord2, present2] = computer.horizontalSearch(board, [7, 0]);
+  expect(coord2).toEqual([
     [6, 0],
     [5, 0],
+    [4, 0],
     [8, 0],
     [9, 0]
   ]);

@@ -7,7 +7,6 @@ function Computer() {
       surrounding = false;
     }
     if (toHit.length > 0) {
-      console.log(toHit);
       let toHitPos = toHit.shift();
       board.receiveAttack(toHitPos);
       history.push(toHitPos);
@@ -26,12 +25,12 @@ function Computer() {
   };
 
   const searchSurrounding = (board, pos) => {
-    let coords = verticalSearch(board, pos);
-    if (coords.length > 0) {
+    let [coords, present] = verticalSearch(board, pos);
+    if (present) {
       return coords;
     }
-    coords = horizontalSearch(board, pos);
-    if (coords.length > 0) {
+    [coords, present] = horizontalSearch(board, pos);
+    if (present) {
       return coords;
     }
   };
@@ -41,9 +40,11 @@ function Computer() {
     let [x, y] = pos;
     let upPos = [x, y - 1];
     let downPos = [x, y + 1];
+    let present = false;
     while (board.containShip(upPos) !== null) {
       if (!inArr(history, upPos)) {
         coords.push(upPos);
+        present = true;
       }
       upPos = [x, upPos[1] - 1];
     }
@@ -53,13 +54,14 @@ function Computer() {
     while (board.containShip(downPos) !== null) {
       if (!inArr(history, downPos)) {
         coords.push(downPos);
+        present = true;
       }
       downPos = [x, downPos[1] + 1];
     }
-    // if (downPos[1] < 10 && !inArr(history, downPos)) {
-    //   coords.push(downPos);
-    // }
-    return coords;
+    if (downPos[1] < 10 && !inArr(history, downPos)) {
+      coords.push(downPos);
+    }
+    return [coords, present];
   };
 
   const horizontalSearch = (board, pos) => {
@@ -67,25 +69,28 @@ function Computer() {
     let [x, y] = pos;
     let leftPos = [x - 1, y];
     let rightPos = [x + 1, y];
+    let present = false;
     while (board.containShip(leftPos) !== null) {
       if (!inArr(history, leftPos)) {
         coords.push(leftPos);
+        present = true;
       }
       leftPos = [leftPos[0] - 1, y];
     }
-    // if (leftPos[0] > -1 && !inArr(history, leftPos)) {
-    //   coords.push(leftPos);
-    // }
+    if (leftPos[0] > -1 && !inArr(history, leftPos)) {
+      coords.push(leftPos);
+    }
     while (board.containShip(rightPos) !== null) {
       if (!inArr(history, rightPos)) {
         coords.push(rightPos);
+        present = true;
       }
       rightPos = [rightPos[0] + 1, y];
     }
-    // if (rightPos[0] < 10 && !inArr(history, rightPos)) {
-    //   coords.push(rightPos);
-    // }
-    return coords;
+    if (rightPos[0] < 10 && !inArr(history, rightPos)) {
+      coords.push(rightPos);
+    }
+    return [coords, present];
   };
 
   const randomCoords = () => {
