@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b1208cac87c13d095c64e2b7ee0052bb",
+    "revision": "5b782626e222c8eb0e37197c23c4b4fb",
     "url": "/battleship-game/index.html"
   },
   {
-    "revision": "dd03f3548f21062fabb4",
+    "revision": "d6baf9a09313a792135b",
     "url": "/battleship-game/static/css/main.f2d26e65.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/battleship-game/static/js/2.e4303854.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "dd03f3548f21062fabb4",
-    "url": "/battleship-game/static/js/main.bdce238b.chunk.js"
+    "revision": "d6baf9a09313a792135b",
+    "url": "/battleship-game/static/js/main.822a7453.chunk.js"
   },
   {
     "revision": "a8d491d1d73f68477439",
