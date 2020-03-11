@@ -21,6 +21,9 @@ function Computer() {
     if (board.containShip(pos) !== null) {
       surrounding = true;
       toHit = searchSurrounding(board, pos);
+      if (toHit.length === 0) {
+        surrounding = false;
+      }
     }
   };
 
@@ -33,6 +36,7 @@ function Computer() {
     if (present) {
       return coords;
     }
+    return [];
   };
 
   const verticalSearch = (board, pos) => {
