@@ -2,4 +2,4 @@
 
 React
 
-[play!](https://xuanlc113.github.io/battleship-game)
+[**play!**](https://xuanlc113.github.io/battleship-game)
