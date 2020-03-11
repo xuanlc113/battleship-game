@@ -18,8 +18,10 @@ const Game = () => {
     if (newGameRef.current) {
       if (winner === "") {
         if (!turn) {
-          computer.attack(computerBoard, computer.randomCoords());
-          setTurn(true);
+          setTimeout(() => {
+            computer.attack(computerBoard, computer.randomCoords());
+            setTurn(true);
+          }, 200);
         }
       }
     } else {
@@ -30,13 +32,11 @@ const Game = () => {
 
   function checkWin() {
     if (computerBoard.allShipsSunk()) {
-      console.log("player win");
-      setWinner("player");
+      setWinner("computer");
       setTurn(false);
     }
     if (playerBoard.allShipsSunk()) {
-      console.log("computer win");
-      setWinner("computer");
+      setWinner("player");
       setTurn(false);
     }
   }
@@ -47,6 +47,7 @@ const Game = () => {
       setPlayerBoard(randomizeBoard());
       setTurn(false);
       setWinner("");
+      setComputer(Computer());
       newGameRef.current = false;
     } else {
       setTurn(true);
@@ -54,11 +55,29 @@ const Game = () => {
     setStart(prevState => !prevState);
   }
 
+  function random() {
+    setComputerBoard(randomizeBoard());
+    setPlayerBoard(randomizeBoard());
+  }
+
   return (
     <div className="game">
-      <button onClick={() => gameStatus()}>
-        {start ? "New Game" : "Start"}
-      </button>
+      <h1>Battleship</h1>
+      <div className="game-status">
+        <button onClick={() => gameStatus()}>
+          {start ? "New Game" : "Start"}
+        </button>
+        {winner !== ""
+          ? `${winner} wins`
+          : start
+          ? turn
+            ? "your turn"
+            : " computer turn"
+          : "setup"}
+        <button onClick={() => random()} disabled={start}>
+          random
+        </button>
+      </div>
       <div className="play-area">
         {start ? (
           <ComputerBoard

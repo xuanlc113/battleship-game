@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Ship from "./Ship";
 import Cell from "./Cell";
 import { includePos } from "../utils/helper";
 import "../styles/Board.css";
@@ -36,15 +35,9 @@ const PlayerBoard = props => {
     return cell;
   }
 
-  //remove to hide ships
-  function renderShips() {
-    return props.board.getShips().map(ship => <Ship ship={ship} />);
-  }
-
   return (
     <div className="board">
       {renderBoard()}
-      {renderShips()}
       {!props.turn && props.children}
     </div>
   );
