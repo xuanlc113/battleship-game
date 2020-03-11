@@ -3,8 +3,7 @@ import { Ship } from "./Ship";
 
 function randomizeBoard() {
   let gameboard = Gameboard();
-  // let shipsToAdd = [6, 4, 4, 3, 3, 3, 2, 2, 2, 2];
-  let shipsToAdd = [5, 4, 3, 2];
+  let shipsToAdd = [5, 4, 4, 3, 3, 2, 2, 2];
   for (let i in shipsToAdd) {
     let ship = randomShip(i, shipsToAdd[i]);
     while (!gameboard.addShip(ship)) {

@@ -9,22 +9,21 @@ const VerticalShip = styled.div`
   top: ${props => props.coord[1] * 40}px;
   width: 40px;
   height: ${props => props.length * 40}px;
-  border: 1px black solid;
-  background: lightblue;
-  z-index: ${props => (props.start ? -1 : props.isDragging ? -1 : 2)};
-  opacity: 0.5;
+  border: 2px royalblue solid;
+  background: rgba(245, 245, 245, 0.6);
+  z-index: ${props => (props.isDragging ? -1 : 2)};
   cursor: move;
 `;
+
 const HorizontalShip = styled.div`
   position: absolute;
   left: ${props => props.coord[0] * 40}px;
   top: ${props => props.coord[1] * 40}px;
   width: ${props => props.length * 40}px;
   height: 40px;
-  border: 1px black solid;
-  background: lightblue;
-  z-index: ${props => (props.start ? -1 : props.isDragging ? -1 : 2)};
-  opacity: 0.5;
+  border: 2px royalblue solid;
+  background: rgba(245, 245, 245, 0.6);
+  z-index: ${props => (props.isDragging ? -1 : 2)};
   cursor: move;
 `;
 

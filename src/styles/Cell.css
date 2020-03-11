@@ -2,17 +2,36 @@
   position: relative;
   height: 40px;
   width: 40px;
-  border: 1px black solid;
+  border: 1px grey solid;
 }
 
 .hit {
-  background: red;
-  opacity: 0.5;
+  background: rgba(0, 0, 0, 0);
+  z-index: 3;
+}
+
+.hit::after {
+  content: "X";
+  font-size: 1.5em;
+  font-weight: 600;
+  vertical-align: -50%;
+  color: red;
 }
 
 .miss {
-  background: lightblue;
-  opacity: 0.5;
+  background: powderblue;
+}
+
+.miss:before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin: 10px 0 0 0;
+  display: inline-block;
+  border-radius: 1rem;
+  border: 3px gray solid;
 }
 
 .empty:hover {

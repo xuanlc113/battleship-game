@@ -67,13 +67,15 @@ const Game = () => {
         <button onClick={() => gameStatus()}>
           {start ? "New Game" : "Start"}
         </button>
-        {winner !== ""
-          ? `${winner} wins`
-          : start
-          ? turn
-            ? "your turn"
-            : " computer turn"
-          : "setup"}
+        <p>
+          {winner !== ""
+            ? `${winner} wins`
+            : start
+            ? turn
+              ? "your turn"
+              : " computer turn"
+            : "setup"}
+        </p>
         <button onClick={() => random()} disabled={start}>
           random
         </button>

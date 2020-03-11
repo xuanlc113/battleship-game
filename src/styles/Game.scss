@@ -1,3 +1,23 @@
+.game {
+  text-align: center;
+  .game-status {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+    margin: 2rem auto;
+    p {
+      font-size: 1.5em;
+    }
+    button {
+      background: lightblue;
+      border: none;
+      border-radius: 1rem;
+      padding: 1rem;
+    }
+  }
+}
+
 .play-area {
   display: flex;
   justify-content: space-around;
